@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-migrate-1.0.0.js"></script>
+    <script src="http://victorherrera.atspace.com/jquery-pathselector-plugin/jquery.pathSelector-all.js"></script>
+</head>
+
+<body>
+    <div class=" flex ">
+        <div class="">
+            <img src="https://salt.tikicdn.com/ts/product/5e/18/24/2a6154ba08df6ce6161c13f4303fa19e.jpg" alt=""
+                class="w-[100px] h-[100px]">
+        </div>
+        <div class="">
+            <h2 class="">Tên sản phẩm</h2>
+            <span class="">Giá sản phẩm</span>
+        </div>
+    </div>
+
+    <!-- <div class="product" id="product">
+        <img srcset="https://salt.tikicdn.com/ts/product/5e/18/24/2a6154ba08df6ce6161c13f4303fa19e.jpg" alt=""
+            class="main-img w-[300px] h-[300px]" id="main-img">
+        <div class="color flex gap-[20px]" id="color">
+            <img srcset="https://salt.tikicdn.com/ts/product/5e/18/24/2a6154ba08df6ce6161c13f4303fa19e.jpg" alt=""
+                class="w-[50px] h-[50px]">
+            <img srcset="https://salt.tikicdn.com/ts/product/45/3b/fc/aa81d0a534b45706ae1eee1e344e80d9.jpg" alt=""
+                class="w-[50px] h-[50px]">
+            <img srcset="https://salt.tikicdn.com/ts/product/5e/18/24/2a6154ba08df6ce6161c13f4303fa19e.jpg" alt=""
+                class="w-[50px] h-[50px]">
+            <img srcset="https://salt.tikicdn.com/ts/product/5e/18/24/2a6154ba08df6ce6161c13f4303fa19e.jpg" alt=""
+                class="w-[50px] h-[50px]">
+            <img srcset="https://salt.tikicdn.com/ts/product/45/3b/fc/aa81d0a534b45706ae1eee1e344e80d9.jpg" alt=""
+                class="w-[50px] h-[50px]">
+
+        </div>
+    </div> -->
+    <script>
+        $(function () {
+            /* Receive notifications when the value of path selector changes.*/
+            $("input[name='location']").bind("valueChanged", {}, function (event, newVal) {
+                $("input[name='currentLocation']").val(newVal);
+            });
+            $("input[name='location']").pathSelector(getOptions, { initValue: [{ value: 'Am', label: 'Americas' }, 'South America'] });
+        });
+        /* function for options*/
+        function getOptions(value, parts) {
+            switch (parts.length) {
+                case 0:
+                    return [{
+                        value: "Am",
+                        label: "Americas"
+                    }, {
+                        value: "Eu",
+                        label: "Europe"
+                    }, {
+                        value: "Af",
+                        label: "Africa"
+                    }, {
+                        value: "As",
+                        label: "Asia"
+                    }, {
+                        value: "Aus",
+                        label: "Australia"
+                    }];
+
+                case 1:
+                    switch (parts[0]) {
+                        case "Am":
+                            return ["North America", "South America"];
+                        case "Eu":
+                            return ["Spain", "United Kingdom", "Italia", "France"];
+                        case "Af":
+                            return ["Mzantsi Afrika", "Egypt", "Libia"];
+                        case "As":
+                            return ["Nihon", "Chungkuo", "Rossiya", "Western Asia"];
+                        case "Aus":
+                            return ["Australia", "New Zealand"];
+                    }
+                case 2:
+                    switch (parts[1]) {
+                        case "North America":
+                            return ["United States of America", "Canada"];
+                        case "South America":
+                            return ["Colombia", "Brazil", "Chile", "Argentina"];
+                        case "Western Asia":
+                            return ["Saudi Arabia", "Israel", "Syria", "Turkey"];
+                        default:
+                            return null;
+                    }
+                default:
+                    return null;
+            }
+        }
+
+        // const listImg = document.querySelectorAll('#color>img');
+        // listImg.forEach(function (elememt) {
+        //     elememt.onmouseover = function () {
+        //         let mainImg = document.querySelector('#main-img');
+        //         mainImg.srcset = this.srcset;
+        //     }
+        // })
+        // const arr = [1, 4, 7, 89, 90];
+        // arr.sort();
+        // console.log(arr);
+    </script>
+</body>
+
+</html>
